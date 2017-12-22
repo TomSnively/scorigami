@@ -1,16 +1,16 @@
 // MAIN CODE IS HERE
-// var maxWin = 73;
-var maxWin = 73;
-var maxLose = 73;
-var rowMarkup;
-var cellMarkup;
+// let maxWin = 73;
+let maxWin = 73;
+let maxLose = 73;
+let rowMarkup;
+let cellMarkup;
 
 // Header Row
 rowMarkup = "<tr><td></td>";				// start with 1 blank column
-for (var x = 0; x <= maxWin; x++) {
+for (let x = 0; x <= maxWin; x++) {
 	rowMarkup = rowMarkup + "<td><strong>" + x + "</strong></td>";
 }
-rowMarkup = rowMarkup + "</tr>"
+rowMarkup = rowMarkup + "</tr>";
 $("table thead").append(rowMarkup);
 
 // Check the JSON.
@@ -19,9 +19,9 @@ $("table thead").append(rowMarkup);
 //		It's green, a score that happened multiple times
 //		It's white, a score that has never happened
 
-var url = "scorigami.json";
-var data;
-var success;
+let url = "scorigami.json";
+let data;
+let success;
 
 $.ajax({
   dataType: "json",
@@ -35,13 +35,13 @@ console.log('success is ' + success);
 for (x = 0; x <= maxWin; x++) {
 	rowMarkup = "<tr>";
 	
-	for (var y = 0; y <= maxLose+1; y++) {
-		if (x == y) {
+	for (let y = 0; y <= maxLose+1; y++) {
+		if (x === y) {
 			cellMarkup = "<td><strong>" + x + "</strong></td>";
 		} else if (x > y){
 			cellMarkup = "<td></td>";
 		} else {
-			var winScore = y - 1;
+			let winScore = y - 1;
 			cellMarkup = "<td>" + winScore + "-" + x + "</td>";
 		}
 		rowMarkup = rowMarkup + cellMarkup;
