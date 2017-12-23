@@ -13,24 +13,16 @@ for (let x = 0; x <= maxWin; x++) {
 rowMarkup = rowMarkup + "</tr>";
 $("table thead").append(rowMarkup);
 
-// Check the JSON.
-// What are the options?
-//		It's black, a not possible score
-//		It's green, a score that happened multiple times
-//		It's white, a score that has never happened
-
-let url = "scorigami.json";
-let data;
-let success;
-
-$.ajax({
-  dataType: "json",
-  url: url,
-  data: data,
-  success: success
+let dataObject;
+// Temporary until we
+$.get("scorigami.json", function(data, status){
+    //alert("Data: " + data + "\nStatus: " + status);
+    dataObject = JSON.parse(data);
 });
 
-console.log('success is ' + success);
+
+
+//console.log('success is ' + success);
 
 for (x = 0; x <= maxWin; x++) {
 	rowMarkup = "<tr>";
